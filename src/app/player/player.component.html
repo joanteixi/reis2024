@@ -1,0 +1,64 @@
+<div class="w-full h-screen flex flex-col items-center justify-center p-6 bg-gray-800 text-white">
+  <h1 class="text-3xl font-bold mb-8">Music Player</h1>
+  @if (error()) {
+  <div class="bg-red-500 p-4 mb-4 rounded w-full max-w-md">
+    <div class="flex items-center">
+      <span class="material-icons mr-2">error_outline</span>
+      <div>
+        <h4 class="font-bold">Error</h4>
+        <p>{{ error() }}</p>
+      </div>
+    </div>
+  </div>
+
+  }
+
+  <!-- Current Track -->
+  <div class="text-center mb-4 w-full max-w-md">
+    <h2 class="text-2xl font-bold">{{ tracks[currentTrackIndex()].title }}</h2>
+    <p class="text-gray-400">{{ tracks[currentTrackIndex()].artist }}</p>
+  </div>
+
+  <!-- Custom Slider -->
+  <div class="relative mb-4 w-full max-w-md">
+    <input type="range" min="0" max="100" [value]="progress()" (input)="handleSeek($event)"
+      class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider-thumb" />
+  </div>
+
+
+  <!-- Player Controls -->
+  <div class="flex justify-center space-x-4 mb-6 w-full max-w-md">
+    <button (click)="handlePrevious()" class="btn h-10">
+      <fa-icon [icon]="faStepBackward"></fa-icon>
+
+    </button>
+    <button (click)="handlePlayPause()" class="btn">
+      @if (isPlaying()) {
+      <fa-icon [icon]="faPause"></fa-icon>
+      }
+      @else {
+      <fa-icon [icon]="faPlay"></fa-icon>
+      }
+    </button>
+    <button (click)="handleNext()" class="btn">
+      <fa-icon [icon]="faStepForward"></fa-icon>
+    </button>
+  </div>
+
+  <!-- Track List -->
+  <h3 class="text-xl font-semibold mb-2">Track List</h3>
+  <div class="h-[200px] w-full max-w-md rounded-md border border-gray-700 p-4 overflow-y-auto custom-scrollbar"
+    #trackListContainer>
+    @for (track of tracks; track $index) {
+    <div class="p-2 cursor-pointer hover:bg-gray-700 rounded-md"
+      [ngClass]="{ 'bg-gray-700': $index === currentTrackIndex() }" (click)="handleTrackSelect($index)">
+      <p class="font-medium">{{ track.title }}</p>
+      <p class="text-sm text-gray-400">{{ track.artist }}</p>
+    </div>
+    }
+    @empty {
+    <p class="text-gray-400">No tracks found</p>
+    }
+  </div>
+
+</div>
