@@ -158,6 +158,12 @@ export class PlayerComponent {
       artist: '',
       url: 'The Tyets - Olívia (subtítols i lletra en català) [4_ZiTdqYmuY].mp3',
     },
+    {
+      id: 'mcnjgw',
+      title: '',
+      artist: '',
+      url: 'Figa Flawas - LA MARINA STA MORENA (Videoclip Oficial) [WakP10DXiD0].mp3',
+    },
 
   ];
 
