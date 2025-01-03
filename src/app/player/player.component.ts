@@ -6,7 +6,6 @@ import {
   ElementRef
 } from '@angular/core';
 
-import { NgClass } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStepBackward, faStepForward, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
@@ -24,7 +23,7 @@ interface Track {
 
 @Component({
   selector: 'app-player',
-  imports: [NgClass, FontAwesomeModule],
+  imports: [FontAwesomeModule],
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss'
 })
