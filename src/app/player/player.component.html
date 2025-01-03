@@ -1,5 +1,5 @@
 <div class="w-full h-screen flex flex-col items-center justify-center p-6 bg-gray-800 text-white">
-  <h1 class="text-3xl font-bold mb-8">Music Player</h1>
+  <h1 class="text-3xl font-bold mb-8">Reis 2025</h1>
   @if (error()) {
   <div class="bg-red-500 p-4 mb-4 rounded w-full max-w-md">
     <div class="flex items-center">
@@ -15,8 +15,10 @@
 
   <!-- Current Track -->
   <div class="text-center mb-4 w-full max-w-md">
-    <h2 class="text-2xl font-bold">{{ tracks[currentTrackIndex()].title }}</h2>
-    <p class="text-gray-400">{{ tracks[currentTrackIndex()].artist }}</p>
+    <!-- <h2 class="text-2xl font-bold">{{ tracks[currentTrackIndex()].title }}</h2> -->
+    <!-- <p class="text-gray-400">{{ tracks[currentTrackIndex()].artist }}</p> -->
+    <h2 class="text-2xl font-bold">Titol secret</h2>
+    <p class="text-gray-400">Cantant Secret</p>
   </div>
 
   <!-- Custom Slider -->
@@ -44,7 +46,7 @@
       <fa-icon [icon]="faStepForward"></fa-icon>
     </button>
   </div>
-
+<!-- 
   <!-- Track List -->
   <h3 class="text-xl font-semibold mb-2">Track List</h3>
   <div class="h-[200px] w-full max-w-md rounded-md border border-gray-700 p-4 overflow-y-auto custom-scrollbar"
@@ -59,6 +61,6 @@
     @empty {
     <p class="text-gray-400">No tracks found</p>
     }
-  </div>
+  </div> -->
 
 </div>
