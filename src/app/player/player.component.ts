@@ -44,19 +44,19 @@ export class PlayerComponent {
       title: 'Sofia',
       artist: 'Alvaro Soler',
       year: 2016,
-      url: 'audios/Alvaro Soler - Sofia [qaZ0oAh4evU].mp3',
+      url: 'Alvaro Soler - Sofia [qaZ0oAh4evU].mp3',
     },
     {
       id: 'xmvbd',
       title: 'Mis Amigos',
       artist: 'Amaral',
-      url: 'audios/Amaral： Mis Amigos - (audio and lyrics ⧸ audio y letras). [2oDnJQaHWZ4].mp3',
+      url: 'Amaral： Mis Amigos - (audio and lyrics ⧸ audio y letras). [2oDnJQaHWZ4].mp3',
     },
     {
       id: 'cnsjf',
       title: 'Toxic',
       artist: 'Britney Spears',
-      url: 'audios/Britney Spears - Toxic (Official HD Video) [LOZuxwVk7TU].mp3',
+      url: 'Britney Spears - Toxic (Official HD Video) [LOZuxwVk7TU].mp3',
     },
     {
       id: 'pdewofj',
@@ -109,7 +109,7 @@ export class PlayerComponent {
       id: 'ghwowkfg',
       title: '',
       artist: '',
-      url: 'Paulina Rubio - Ni Una Sola Palabra (Video Oficial) [Kkdhtb9DVWQ].mp3',
+      url: 'Paulina-Rubio-Ni-Una-Sola-Palabra.mp3',
     },
     {
       id: 'feijeig',
@@ -189,7 +189,7 @@ export class PlayerComponent {
 
   loadTrack() {
     this.audio?.pause();
-    this.audio = new Audio(this.tracks[this.currentTrackIndex()].url);
+    this.audio = new Audio('audios/' + this.tracks[this.currentTrackIndex()].url);
 
     this.audio.addEventListener('timeupdate', this.updateProgress.bind(this));
     this.audio.addEventListener('ended', this.handleNext.bind(this));
