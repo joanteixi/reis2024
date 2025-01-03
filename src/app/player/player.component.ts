@@ -9,6 +9,7 @@ import {
 import { NgClass } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStepBackward, faStepForward, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,6 +17,8 @@ interface Track {
   title: string;
   artist: string;
   url: string;
+  id?: string;
+  year?: number;
 }
 
 
@@ -38,19 +41,23 @@ export class PlayerComponent {
 
   tracks: Track[] = [
     {
-      title: 'Serenity',
-      artist: 'Piano and Strings',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      id: 'aznsjhg',
+      title: 'Sofia',
+      artist: 'Alvaro Soler',
+      year: 2016,
+      url: 'audios/Alvaro Soler - Sofia [qaZ0oAh4evU].mp3',
     },
     {
-      title: 'Energetic Beats',
-      artist: 'Drum and Bass Collective',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+      id: 'xmvbd',
+      title: 'Mis Amigos',
+      artist: 'Amaral',
+      url: 'audios/Amaral： Mis Amigos - (audio and lyrics ⧸ audio y letras). [2oDnJQaHWZ4].mp3',
     },
     {
-      title: 'Smooth Jazz',
-      artist: 'Sax and Keys',
-      url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+      id: 'cnsjf',
+      title: 'Toxic',
+      artist: 'Britney Spears',
+      url: 'audios/Britney Spears - Toxic (Official HD Video) [LOZuxwVk7TU].mp3',
     },
     {
       title: 'Classical Symphony',
@@ -95,9 +102,25 @@ export class PlayerComponent {
   error = signal<string | null>(null);
   private audio: HTMLAudioElement | null = null;
 
+  constructor(private route: ActivatedRoute) { }
+
+
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const trackId = params['id'];
+      console.log('trackId', trackId);
+
+      if (trackId) {
+        const trackIndex = this.tracks.findIndex(track => track.id === trackId);
+        if (trackIndex !== -1) {
+          this.currentTrackIndex.set(trackIndex);
+        }
+      }
+    });
+   
     this.loadTrack();
   }
+
 
   loadTrack() {
     this.audio?.pause();
